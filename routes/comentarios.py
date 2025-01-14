@@ -23,7 +23,7 @@ def edit_comentario(comentario_id):
      return render_template("form_comentario.html")
 
 @comentarios_route.route("/<int:comentario_id>/update")
-def edit_comentario(comentario_id):
+def update_comentario(comentario_id):
      return render_template("item_comentario.html")
 
 @comentarios_route.route("/<int:comentario_id>/delete")

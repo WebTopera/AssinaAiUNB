@@ -20,10 +20,10 @@ def show_professor(professor_id):
 
 @professor_route.route("/<int:professor_id>/edit")
 def edit_professor(professor_id):
-     return render_template("form_professor.html")
+     return render_template("form_professor_edit.html")
 
 @professor_route.route("/<int:professor_id>/update")
-def edit_professor(professor_id):
+def update_professor(professor_id):
      return render_template("item_professor.html")
 
 @professor_route.route("/<int:professor_id>/delete")

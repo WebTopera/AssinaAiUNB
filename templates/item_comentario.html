@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>AssinaAiUNB</title>
-</head>
-<body>
-    <h1>Professores</h1>
-    <script src="{{ url_for('static', filename='js/cru.js') }}"></script>
-</body>
-</html>
+<a href="{{ url_for('show_comentario', professor_id=professor.id) }}" 
+style="text-decoration: none;">
+    <div class="list_comentarios">
+        <div class="title-comentario">
+            <h1>{{comentario.title}}</h1>
+        </div>
+        <div class="grade-comentario">
+            <h2>{{comentario.grade}}</h2>
+        </div>
+        <div class="description-comentario">
+            <p>{{comentario.description}}</p>
+        </div>
+    </div>
+</a>

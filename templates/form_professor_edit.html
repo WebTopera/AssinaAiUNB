@@ -1,0 +1,25 @@
+<form class="c-form" 
+        action="{{ url_for('professor.edit_professor', professor_id=professor.id) }}" 
+        method="PUT"
+        c-swap="#professor-{{professor.id}}"
+
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" name="nome" value="{{professor.nome}}">
+    </div>
+
+    <div class="mb-3">
+        <label id="label-target" class="form-label">Descrição</label>
+        <input type="text" class="form-control" name="descricao" value="{{professor.description}}">
+    </div>
+  
+    <div class="input-group mb-3">
+        <input type="file" class="form-control" id="inputGroupFile02">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+      </div>
+      
+
+    <button type="submit" class="btn btn-primary">
+        Salvar
+    </button>
+</form>

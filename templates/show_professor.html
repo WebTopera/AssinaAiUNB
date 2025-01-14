@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>AssinaAiUNB</title>
-</head>
-<body>
-    <h1>Professores</h1>
-    <script src="{{ url_for('static', filename='js/cru.js') }}"></script>
-</body>
-</html>
+<a href="{{ url('list_professor') }}" class="bi bi-arrow-left">Voltar</a>
+<div id="professor-{{professor.id}}">
+    <div class="image-professor">
+        <img src="{{professor.image}}.png" alt="Foto de perfil do professor {{professor.name}}.">
+    </div>
+    <div class="name-professor">
+        <h1>{{professor.name}}</h1>
+    </div>
+    <div class="grade-professor">
+        <h2>{{professor.grade}}</h2>
+    </div>
+    <div class="description-professor">
+        <p>{{professor.description}}</p>
+    </div>
+    <button class="btn btn-primary" 
+        c-get="{{ url_for('professor.edit_professor', professor_id=professor.id) }}"
+        c-target="#form-professor">
+            Editar
+    </button>
+
+    <button class="btn btn-danger" 
+        c-delete="{{ url_for('professor.delete_professor', professor_id=professor.id) }}"
+        c-remove-closest="tr">
+            Deletar
+    </button>
+</div>
