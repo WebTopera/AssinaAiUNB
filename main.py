@@ -1,9 +1,13 @@
 from flask import Flask, redirect, request
+from peewee import SqliteDatabase
 from routes.home import home_route
 from routes.comentarios import comentarios_route
 from routes.professor import professor_route
+from database.database import Comentarios, Professores
 
 app = Flask(__name__)
+
+db = SqliteDatabase([Comentarios, Professores])
 
 @app.before_request
 def redirect_to_https():

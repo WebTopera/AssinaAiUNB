@@ -1,11 +1,31 @@
 from flask import Blueprint, render_template
-from peewee import *
-from database.database import Comentarios
 
 comentarios_route = Blueprint("comentarios", __name__)
 
-db = SqliteDatabase([Comentarios])
+@comentarios_route.route("/")
+def list_comentario():
+     return render_template("list_comentario.html")
 
-@comentarios_route.route('/')
-def list_comentarios():
-    return render_template("list_comentarios.html")
+@comentarios_route.route("/", methods=["POST"])
+def insert_comentario():
+     return render_template("item_comentario.html")
+
+@comentarios_route.route("/new")
+def form_comentario():
+     return render_template("form_comentario.html")
+
+@comentarios_route.route("/<int:comentario_id>")
+def show_comentario(comentario_id):
+     return render_template("show_comentario.html")
+
+@comentarios_route.route("/<int:comentario_id>/edit")
+def edit_comentario(comentario_id):
+     return render_template("form_comentario.html")
+
+@comentarios_route.route("/<int:comentario_id>/update")
+def edit_comentario(comentario_id):
+     return render_template("item_comentario.html")
+
+@comentarios_route.route("/<int:comentario_id>/delete")
+def delete_comentario(comentario_id):
+     return {"deleted": "ok"}

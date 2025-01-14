@@ -1,11 +1,31 @@
 from flask import Blueprint, render_template
-from peewee import *
-from database.database import Professor
 
 professor_route = Blueprint("professor", __name__)
 
-db = SqliteDatabase([Professor])
-
-@professor_route.route('/')
+@professor_route.route("/")
 def list_professor():
      return render_template("list_professor.html")
+
+@professor_route.route("/", methods=["POST"])
+def insert_professor():
+     return render_template("item_professor.html")
+
+@professor_route.route("/new")
+def form_professor():
+     return render_template("form_professor.html")
+
+@professor_route.route("/<int:professor_id>")
+def show_professor(professor_id):
+     return render_template("show_professor.html")
+
+@professor_route.route("/<int:professor_id>/edit")
+def edit_professor(professor_id):
+     return render_template("form_professor.html")
+
+@professor_route.route("/<int:professor_id>/update")
+def edit_professor(professor_id):
+     return render_template("item_professor.html")
+
+@professor_route.route("/<int:professor_id>/delete")
+def delete_professor(professor_id):
+     return {"deleted": "ok"}
