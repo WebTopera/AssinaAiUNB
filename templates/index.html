@@ -8,10 +8,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <div class="menu">
+        <nav class="top-menu">
+            <ul>
+                <li style="font-weight: bold;"><h4>AssinaAiUNB</h4></li>
+                <li><a href="{{ url_for('professor.form_professor') }}" class="novo-professor">Novo Professor</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
     <div class="container">
-        <div id="list-professor" c-container="{{ url_for('list_professor') }}"></div>
-        <div id="list-professor" c-container="{{ url_for('list_comentario') }}"></div>
-        <div id="form-comentario" c-container="{{ url_for('comentario_form') }}">
+        <div id="list-professor" c-container="{{ url_for('professor.list_professor') }}"></div>
+        <div id="list-professor" c-container="{{ url_for('comentario.list_comentario') }}"></div>
     </div>
     </div>
     <script src="{{ url_for('static', filename='js/cru.js') }}"></script>
