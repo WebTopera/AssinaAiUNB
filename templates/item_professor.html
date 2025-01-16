@@ -1,8 +1,8 @@
 <a href="{{ url_for('professor.show_professor', professor_id=professor.id) }}" 
 style="text-decoration: none;">
-    <div class="item-professor">    
+    <div class="item-professor" id="professor-{{professor.id}}">    
         <div class="image-professor">
-            <img src="{{professor.image}}.png" alt="Foto de perfil do professor {{professor.name}}.">
+            <h1>{{professor.filename}}</h1>
         </div>
         <div class="name-professor">
             <h1>{{professor.name}}</h1>
