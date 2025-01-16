@@ -1,25 +1,61 @@
-<form class="c-form" 
-        action="{{ url_for('professor.edit_professor', professor_id=professor.id) }}" 
-        method="PUT"
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="menu">
+        <nav class="top-menu">
+            <ul>
+                <a href="{{ url_for('home.home') }}" class="bi bi-arrow-left" 
+                style="text-decoration: none; color: #2b35ca;">Voltar</a>
+            </ul>
+        </nav>
+        </div>
+    </header>
+<form class="c-form professor-new-form" 
+        action="{{ url_for('professor.update_professor', professor_id=professor.id) }}" 
+        method="POST"
         c-swap="#professor-{{professor.id}}"
-
-    <div class="mb-3">
+        enctype="multipart/form-data"
+        onsubmit="Reset(event)"
+        c-reload-container="true"
+>
+<div style="padding: 20px;">
+    <div class="mb-3 w-50">
       <label class="form-label">Nome</label>
-      <input type="text" class="form-control" name="nome" value="{{professor.nome}}">
+      <input type="text" class="form-control" name="nome" value="{{professor.name}}">
     </div>
 
-    <div class="mb-3">
-        <label id="label-target" class="form-label">Descrição</label>
-        <input type="text" class="form-control" name="descricao" value="{{professor.description}}">
+    <div class="mb-3 w-50">
+        <label for="exampleFormControlTextarea1" class="form-label">Descricao</label>
+        <textarea class="form-control" id="descricao" name="description" rows="3">{{professor.Description}}</textarea>
     </div>
-  
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" id="inputGroupFile02">
-        <label class="input-group-text" for="inputGroupFile02">Upload</label>
-      </div>
-      
+    
+    <div class="input-group mb-3 w-50">
+        <input type="file" class="form-control" id="perfil-professor" name="perfil-professor">
+        <label class="input-group-text" for="perfil-professor">Upload</label>
+    </div>
+    <div class="mb-3 w-50">
+      <p>Arquivo atual: {{professor.filename}}</p>
+  </div>
 
     <button type="submit" class="btn btn-primary">
-        Salvar
+        Criar
     </button>
+    <script>
+        function handleSubmit(event) {
+        event.preventDefault();
+        
+        document.querySelector('.professor-new-form').reset();
+        }
+    </script>
+</div>
 </form>
+</body>
+</html>

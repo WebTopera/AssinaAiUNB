@@ -10,14 +10,22 @@ def list_professor():
 
 @professor_route.route("/", methods=["POST"])
 def insert_professor():
-     id = PROFS[-1]["id"] + 1
-     nome = request.form.get('nome')
-     descricao = request.form.get('description')
-     arquivo = request.files.get('perfil-professor') 
-     if arquivo and nome and descricao:
-          new_professor = {"id": id, "name": nome, "filename":arquivo.filename}
-          PROFS.append(new_professor)
-          return redirect(url_for('home.home'))
+    id = PROFS[-1]["id"] + 1
+    nome = request.form.get('nome')
+    descricao = request.form.get('description')
+    arquivo = request.files.get('perfil-professor')
+    if arquivo and nome and descricao:
+        new_professor = {
+            "id": id,
+            "name": nome,
+            "Description": descricao,
+            "media": 0,
+            "sum_grade": 0,
+            "q_avaliations": 0,
+            "filename": arquivo.filename
+        }
+        PROFS.append(new_professor)
+        return redirect(url_for('home.home'))
 
 @professor_route.route("/new")
 def form_professor():
@@ -31,12 +39,30 @@ def show_professor(professor_id):
 
 @professor_route.route("/<int:professor_id>/edit")
 def edit_professor(professor_id):
-     return render_template("form_professor_edit.html")
+     professor = None
+     for P in PROFS:
+          if P["id"] == professor_id:
+               professor = P
+     return render_template("form_professor_edit.html", professor=professor)
 
-@professor_route.route("/<int:professor_id>/update")
+@professor_route.route("/<int:professor_id>/update", methods=["POST"])
 def update_professor(professor_id):
-     return render_template("item_professor.html")
+    nome = request.form.get('nome')
+    descricao = request.form.get('description')
+    arquivo = request.files.get('perfil-professor')
+    for professor in PROFS:
+        if professor["id"] == professor_id:
+            if nome:
+                professor["name"] = nome
+            if descricao:
+                professor["Description"] = descricao
+            if arquivo:
+                professor["filename"] = arquivo.filename
+            break
+    return redirect(url_for('home.home'))
 
 @professor_route.route("/<int:professor_id>/delete")
 def delete_professor(professor_id):
+     global PROFS
+     PROFS = [professor for professor in PROFS if professor["id"] != professor_id]
      return {"deleted": "ok"}

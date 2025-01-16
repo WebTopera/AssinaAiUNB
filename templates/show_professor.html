@@ -10,9 +10,6 @@
 <body>
 <a href="{{ url_for('home.home') }}" class="bi bi-arrow-left">Voltar</a>
 <div id="exibir-professor">
-    <div class="image-professor">
-        <img src="{{professor.image}}.png" alt="Foto de perfil do professor {{professor.name}}.">
-    </div>
     <div class="name-professor">
         <h1>{{professor.name}}</h1>
     </div>
@@ -22,15 +19,15 @@
     <div class="description-professor">
         <p>{{professor.description}}</p>
     </div>
-    <button class="btn btn-primary" 
-        c-get="{{ url_for('professor.edit_professor', professor_id=professor.id) }}"
-        c-target="#form-professor">
+    <a href="{{ url_for('professor.edit_professor', professor_id=professor.id) }}">
+    <button class="btn btn-primary" >
             Editar
     </button>
+    </a>
 
     <button class="btn btn-danger" 
         c-delete="{{ url_for('professor.delete_professor', professor_id=professor.id) }}"
-        c-remove-closest="tr">
+        c-remove-closest="div">
             Deletar
     </button>
 </div>
