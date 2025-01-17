@@ -10,6 +10,8 @@
 <body>
 <a href="{{ url_for('home.home') }}" class="bi bi-arrow-left">Voltar</a>
 <div id="exibir-professor">
+    <img src="{{url_for('static', filename='images/' ~ professor.filename)}}"
+    alt="Foto do professor {{professor.name}}">
     <div class="name-professor">
         <h1>{{professor.name}}</h1>
     </div>
@@ -30,6 +32,14 @@
         c-remove-closest="div">
             Deletar
     </button>
+    <h3>COmentarios</h3>
+    <div>
+    {% for comentario in comentarios %}
+    <div class="comentario">
+        {% include 'item_comentario.html' %}
+    </div>
+    {% endfor %}
+</div>
 </div>
 <script src="{{ url_for('static', filename='js/cru.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

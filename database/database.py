@@ -37,3 +37,16 @@ PROFS = [
     {"id": 11, "name": "Ricardo", "Description": "exemplo Descricao 11", "media": 0, "sum_grade": 0, "q_avaliations": 0, "filename": "ricardo.png"},
     {"id": 12, "name": "Patrícia", "Description": "exemplo Descricao 12", "media": 0, "sum_grade": 0, "q_avaliations": 0, "filename": "patricia.png"}
 ]
+
+COMETS = [
+    {"id": 1,"title": "Comentário 1", "text": "Texto do comentário 1", "grade": 0, "professor_id": 1},
+    {"id": 2,"title": "Comentário 2", "text": "Texto do comentário 2", "grade": 0, "professor_id": 2},
+    {"id": 3,"title": "Comentário 3", "text": "Texto do comentário 3", "grade": 0, "professor_id": 3},
+    {"id": 4,"title": "Comentário 4", "text": "Texto do comentário 4", "grade": 0, "professor_id": 4},
+    {"id": 5,"title": "Comentário 5", "text": "Texto do comentário 5", "grade": 0, "professor_id": 5},
+    {"id": 6,"title": "Comentário 6", "text": "Texto do comentário 6", "grade": 0, "professor_id": 6},
+    {"id": 7,"title": "Comentário 7", "text": "Texto do comentário 7", "grade": 0, "professor_id": 7},
+    {"id": 8,"title": "Comentário 8", "text": "Texto do comentário 8", "grade": 0, "professor_id": 8},
+    {"id": 9,"title": "Comentário 9", "text": "Texto do comentário 9", "grade": 0, "professor_id": 9},
+    {"id": 10,"title": "Comentário 10", "text": "Texto do comentário 10", "grade": 0, "professor_id": 10},
+]
