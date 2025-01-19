@@ -1,11 +1,12 @@
-<a href="{{ url_for('professor.show_professor', professor_id=professor.id) }}" 
-style="text-decoration: none;">
-    <div class="item-professor" id="professor-{{professor.id}}">    
-        <div class="image-professor">
-            <h1>{{professor.filename}}</h1>
+<div class="container-professores">
+    <div class="professor-center">
+    <a href="{{ url_for('professor.show_professor', professor_id=professor.id) }}" style="text-decoration: none;">
+        <div class="item-professor" id="professor-{{professor.id}}">
+            <img class="img-professor" src="{{ url_for('static', filename='images/' ~ professor.filename) }}" alt="Foto do professor {{professor.name}}">
+            <div class="name-professor">
+                <h1 class="professor-name-index">{{professor.name}}</h1>
+            </div>
         </div>
-        <div class="name-professor">
-            <h1>{{professor.name}}</h1>
-        </div>
+    </a>
     </div>
-</a>
+</div>

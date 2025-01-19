@@ -8,18 +8,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-<a href="{{ url_for('home.home') }}" class="bi bi-arrow-left">Voltar</a>
-<div id="exibir-professor">
+    <header>
+        <div class="menu">
+        <nav class="top-menu">
+            <ul>
+                <a href="{{ url_for('home.home') }}" class="bi bi-arrow-left" 
+                style="text-decoration: none; color: #2b35ca;">Voltar</a>
+            </ul>
+        </nav>
+        </div>
+    </header>
+<div id="exibir-professor" class="container">
     <img src="{{url_for('static', filename='images/' ~ professor.filename)}}"
-    alt="Foto do professor {{professor.name}}">
+    alt="Foto do professor {{professor.name}}"
+    class="img-professor">
     <div class="name-professor">
         <h1>{{professor.name}}</h1>
     </div>
-    <div class="grade-professor">
-        <h2>{{professor.grade}}</h2>
-    </div>
     <div class="description-professor">
-        <p>{{professor.description}}</p>
+        <h1 class="description">Descrição: <br> {{professor.Description}}</h1>
+    </div>
+    <div class="id-professor">
+        <h1>Id: {{professor.id}}</h1>
     </div>
     <a href="{{ url_for('professor.edit_professor', professor_id=professor.id) }}">
     <button class="btn btn-primary" >
@@ -32,7 +42,16 @@
         c-remove-closest="div">
             Deletar
     </button>
-    <h3>COmentarios</h3>
+
+    <a href="{{ url_for('comentario.form_comentario', professor_id=professor.id) }}">
+        <button class="btn btn-success" >
+                Postar
+        </button>
+    </a>
+
+    <h1 style="margin-top: 20px;">Comentarios</h1>
+    <hr>
+    <br>
     <div>
     {% for comentario in comentarios %}
     <div class="comentario">

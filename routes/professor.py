@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from database.database import PROFS, COMETS
+import os
 
 professor_route = Blueprint("professor", __name__)
 
@@ -14,6 +15,10 @@ def insert_professor():
     descricao = request.form.get('description')
     arquivo = request.files.get('perfil-professor')
     if arquivo and nome and descricao:
+        filepath = os.path.join("static", "images", arquivo.filename)
+
+        arquivo.save(filepath)
+
         new_professor = {
             "id": id,
             "name": nome,
