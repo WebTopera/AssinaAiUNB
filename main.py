@@ -9,4 +9,4 @@ app.register_blueprint(home_route)
 app.register_blueprint(comentarios_route, url_prefix="/comentarios")
 app.register_blueprint(professor_route, url_prefix="/professores")
 
-app.run(debug=True, port=5000)
+app.run(debug=True, host='0.0.0.0', port=5000)
